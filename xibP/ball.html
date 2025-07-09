@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คลิกรูปภาพเพื่อดูคำอธิบาย</title>
+    <style>
+        /* CSS สำหรับจัดรูปแบบ */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .image-container {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px; /* จำกัดความกว้างของคอนเทนเนอร์ */
+        }
+
+        .image-container img {
+            max-width: 100%; /* ทำให้รูปภาพปรับขนาดตามคอนเทนเนอร์ */
+            height: auto;
+            border-radius: 4px;
+            cursor: pointer; /* แสดงว่าเป็นองค์ประกอบที่คลิกได้ */
+            transition: transform 0.2s ease-in-out; /* เพิ่ม animation ตอน hover */
+        }
+
+        .image-container img:hover {
+            transform: scale(1.02); /* ขยายเล็กน้อยตอน hover */
+        }
+
+        .description {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e9f5ff;
+            border: 1px solid #cceeff;
+            border-radius: 5px;
+            color: #333;
+            text-align: left;
+            display: none; /* ซ่อนไว้ในตอนแรก */
+            animation: fadeIn 0.5s ease-out; /* เพิ่ม animation ตอนแสดงผล */
+        }
+
+        /* Keyframe สำหรับ fadeIn animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>คลิกที่รูปภาพเพื่อดูคำอธิบาย</h1>
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300x200?text=Click+Me" alt="รูปภาพวิวธรรมชาติ" id="myImage">
+        <div class="description" id="imageDescription">
+            <p>นี่คือรูปภาพของวิวทิวทัศน์ที่สวยงาม มองเห็นภูเขาเขียวขจีและท้องฟ้าสีครามสดใส เหมาะสำหรับการพักผ่อนและสัมผัสกับธรรมชาติ.</p>
+            <p>เมื่อคุณคลิกที่รูปภาพนี้ ข้อความคำอธิบายก็จะปรากฏขึ้นมา.</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript สำหรับการแสดง/ซ่อนคำอธิบาย
+        const myImage = document.getElementById('myImage');
+        const imageDescription = document.getElementById('imageDescription');
+
+        myImage.addEventListener('click', function() {
+            // ตรวจสอบว่าคำอธิบายกำลังแสดงอยู่หรือไม่
+            if (imageDescription.style.display === 'none' || imageDescription.style.display === '') {
+                imageDescription.style.display = 'block'; // แสดงคำอธิบาย
+            } else {
+                imageDescription.style.display = 'none'; // ซ่อนคำอธิบาย
+            }
+        });
+    </script>
+
+</body>
+</html>
